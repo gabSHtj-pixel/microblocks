@@ -1,0 +1,46 @@
+module DireccionesCar2
+author unknown
+version 1 0 
+description ''
+
+  spec ' ' 'avanzar' 'avanzar _ _ _ _' 'auto auto auto auto' '10' 10 '10' '10'
+  spec ' ' 'detener' 'detener _ _ _ _' 'auto auto auto auto' 10 10 '10' '10'
+  spec ' ' 'giroDer' 'giroDer _ _ _ _' 'auto auto auto auto' '10' '10' '10' '10'
+  spec ' ' 'giroIzq' 'giroIzq _ _ _ _' 'auto auto auto auto' 10 10 '10' '10'
+  spec ' ' 'retroceder2' 'atras _ _ _ _' 'auto auto auto auto' '10' '10' '10' '10'
+
+to avanzar MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA false
+  digitalWriteOp MotIzqB true
+  digitalWriteOp MotDerA false
+  digitalWriteOp MotDerB true
+}
+
+to detener MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA false
+  digitalWriteOp MotIzqB false
+  digitalWriteOp MotDerA false
+  digitalWriteOp MotDerB false
+}
+
+to giroDer MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA true
+  digitalWriteOp MotIzqB false
+  digitalWriteOp MotDerA false
+  digitalWriteOp MotDerB true
+}
+
+to giroIzq MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA false
+  digitalWriteOp MotIzqB true
+  digitalWriteOp MotDerA true
+  digitalWriteOp MotDerB false
+}
+
+to retroceder2 MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA true
+  digitalWriteOp MotIzqB false
+  digitalWriteOp MotDerA true
+  digitalWriteOp MotDerB false
+}
+
