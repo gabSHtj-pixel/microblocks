@@ -1,0 +1,94 @@
+module direccionesCARRO3
+author unknown
+version 1 0 
+description ''
+
+  spec ' ' 'Adelante' 'Adelante _ _ _ _' 'auto auto auto auto' '10' 11 12 13
+  spec ' ' 'Cudrado' 'Cudrado _ _ _ _' 'auto auto auto auto' '10' 11 12 13
+  spec ' ' 'Formas' 'Formas _ _' 'auto auto' 2 6
+  spec ' ' 'Parar' 'Parar _ _ _ _' 'auto auto auto auto' '10' 11 12 13
+  spec ' ' 'Retroceder' 'Retroceder _ _ _ _' 'auto auto auto auto' '10' 11 12 13
+  spec ' ' 'Triangulo' 'Triangulo _ _ _ _' 'auto auto auto auto' '10' 11 12 13
+  spec ' ' 'giroDerecha' 'giroDerecha _ _ _ _' 'auto auto auto auto' '10' 11 12 13
+  spec ' ' 'giroIzquierda' 'giroIzquierda _ _ _ _' 'auto auto auto auto' '10' 11 12 13
+  spec ' ' 'ledEstado' 'ledEstado _ _' 'auto bool' 14 false
+
+to Adelante MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA false
+  digitalWriteOp MotIzqB true
+  digitalWriteOp MotDerA false
+  digitalWriteOp MotDerB true
+}
+
+to Cudrado MotIzqA MotIzqB MotDerA MotDerB {
+  Adelante MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+  giroDerecha MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+  Adelante MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+  giroDerecha MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+  Adelante MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+  giroDerecha MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+  Adelante MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+  giroDerecha MotIzqA MotIzqB MotDerA MotDerB
+  waitMillis 500
+}
+
+to Formas pin1 pin2 {
+  if ((digitalReadOp pin1) & ('~' (digitalReadOp pin2))) {Cuadrado 10 11 12 13}
+  if ((digitalReadOp pin2) & ('~' (digitalReadOp pin1))) {triangulo 10 11 12 13}
+}
+
+to Parar MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA false
+  digitalWriteOp MotIzqB false
+  digitalWriteOp MotDerA false
+  digitalWriteOp MotDerB false
+}
+
+to Retroceder MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA true
+  digitalWriteOp MotIzqB false
+  digitalWriteOp MotDerA true
+  digitalWriteOp MotDerB false
+}
+
+to Triangulo MotIzA MotIzB MotDerA MotDerB {
+  Adelante MotIzA MotIzB MotDerA MotDerB
+  waitMillis 700
+  giroIzquierda MotIzA MotIzB MotDerA MotDerB
+  waitMillis 500
+  Adelante MotIzA MotIzB MotDerA MotDerB
+  waitMillis 400
+  giroIzquierda MotIzA MotIzB MotDerA MotDerB
+  waitMillis 750
+  Adelante MotIzA MotIzB MotDerA MotDerB
+  waitMillis 700
+  giroIzquierda MotIzA MotIzB MotDerA MotDerB
+  waitMillis 700
+}
+
+to giroDerecha MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA true
+  digitalWriteOp MotIzqB false
+  digitalWriteOp MotDerA false
+  digitalWriteOp MotDerB true
+}
+
+to giroIzquierda MotIzqA MotIzqB MotDerA MotDerB {
+  digitalWriteOp MotIzqA false
+  digitalWriteOp MotIzqB true
+  digitalWriteOp MotDerA true
+  digitalWriteOp MotDerB false
+}
+
+to ledEstado pin estado {
+  if estado {analogWriteOp pin 1023}
+  analogWriteOp pin 50
+}
+
